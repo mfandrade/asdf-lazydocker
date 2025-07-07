@@ -51,6 +51,22 @@ get_platform() {
 	echo -n $platorm
 }
 
+get_arch() {
+	local arch
+
+	case "$(uname -m)" in
+	x86_64 | amd64) arch="x86_64" ;;
+	armv6l) arch="armv6" ;;
+	armv7l) arch="armv7" ;;
+	aarch64 | arm64) arch="arm64" ;;
+	*)
+		fail "Arch '$(uname -m)' not supported!"
+		;;
+	esac
+
+	echo -n $arch
+}
+
 download_release() {
 	local version filename url
 	version="$1"
