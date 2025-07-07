@@ -48,7 +48,7 @@ get_platform() {
 		;;
 	esac
 
-	echo -n $platorm
+	echo -n $platform
 }
 
 get_arch() {
