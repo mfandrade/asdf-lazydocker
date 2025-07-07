@@ -36,6 +36,21 @@ list_all_versions() {
 	list_github_tags
 }
 
+get_platform() {
+	local platform
+
+	case "$(uname | tr '[:upper:]' '[:lower:]')" in
+	darwin) platform="Darwin" ;;
+	linux) platform="Linux" ;;
+	windows) platform="Windows" ;;
+	*)
+		fail "Platform '$(uname)' not supported!"
+		;;
+	esac
+
+	echo -n $platorm
+}
+
 download_release() {
 	local version filename url
 	version="$1"
