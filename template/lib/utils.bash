@@ -67,6 +67,22 @@ get_arch() {
 	echo -n $arch
 }
 
+get_extension() {
+	local extension=""
+
+	case "$(uname | tr '[:upper:]' '[:lower:]')" in
+	darwin) extension="tar.gz" ;;
+	freebsd) extension="tar.gz" ;;
+	linux) extension="tar.gz" ;;
+	windows) extension="zip" ;;
+	*)
+		fail "Platform '$(uname)' not supported!"
+		;;
+	esac
+
+	echo -n $extension
+}
+
 download_release() {
 	local version filename url
 	version="$1"
