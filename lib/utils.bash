@@ -80,7 +80,7 @@ download_release() {
 	version="$1"
 	filename="$2"
 
-	url="$GH_REPO/releases/download/v${version}/$TOOL_NAME_${version}_$(get_platform)_$(get_arch).$(get_extension)"
+	url="${GH_REPO}/releases/download/v${version}/${TOOL_NAME}_${version}_$(get_platform)_$(get_arch).$(get_extension)"
 
 	echo "* Downloading $TOOL_NAME release $version..."
 	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
