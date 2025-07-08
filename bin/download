@@ -18,10 +18,10 @@ download_release "$ASDF_INSTALL_VERSION" "$release_file"
 
 #  Extract contents of release file into the download directory
 if [ "$extension" == "tar.gz" ]; then
-	tar -xzf "$release_file" -C "$ASDF_DOWNLOAD_PATH" --strip-components=1 || fail "Could not extract $release_file"
+	tar -xzf "$release_file" "$TOOL_NAME" -C "$ASDF_DOWNLOAD_PATH" || fail "Could not extract $release_file"
 
 elif [ "$extension" == "zip" ]; then
-	unzip "$release_file" -d "$ASDF_DOWNLOAD_PATH" || fail "Could not extract $release_file"
+	unzip "$release_file" "$TOOL_NAME" -d "$ASDF_DOWNLOAD_PATH" || fail "Could not extract $release_file"
 
 fi
 
