@@ -67,7 +67,7 @@ get_extension() {
 	local extension=""
 	local platform=$(get_platform)
 
-	case "$platform" in
+	case "$(echo $platform | tr '[:upper:]' '[:lower:]')" in
 	darwin | linux) extension="tar.gz" ;;
 	windows) extension="zip" ;;
 	esac
