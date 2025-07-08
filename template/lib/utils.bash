@@ -72,11 +72,10 @@ get_extension() {
 
 	case "$(uname | tr '[:upper:]' '[:lower:]')" in
 	darwin) extension="tar.gz" ;;
-	freebsd) extension="tar.gz" ;;
 	linux) extension="tar.gz" ;;
 	windows) extension="zip" ;;
 	*)
-		fail "Platform '$(uname)' not supported!"
+		fail "Platform '$(uname)' not supported!" # TODO: call get_platform() instead
 		;;
 	esac
 
