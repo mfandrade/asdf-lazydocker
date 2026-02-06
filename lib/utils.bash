@@ -83,7 +83,7 @@ download_release() {
 	if [[ "$version" == "latest" ]]; then
 		local script_path="${BASH_SOURCE[0]}"
 		local bin_dir="$(dirname "$(dirname "$script_path")")/bin"
-		version="$("$bin_dir/latest_stable")"
+		version="$("$bin_dir/latest-stable")"
 	fi
 
 	local pure_version="${version#v}"
