@@ -80,9 +80,17 @@ download_release() {
 	version="$1"
 	filename="$2"
 
-	url="${GH_REPO}/releases/download/v${version}/${TOOL_NAME}_${version}_$(get_platform)_$(get_arch).$(get_extension)"
+	if [[ "$version" == "latest" ]]; then
+		local script_path="${BASH_SOURCE[0]}"
+		local bin_dir="$(dirname "$(dirname "$script_path")")/bin"
+		version="$("$bin_dir/latest_stable")"
+	fi
 
-	echo "* Downloading $TOOL_NAME release $version..."
+	local pure_version="${version#v}"
+
+	url="${GH_REPO}/releases/download/v${pure_version}/${TOOL_NAME}_${pure_version}_$(get_platform)_$(get_arch).$(get_extension)"
+
+	echo "* Downloading $TOOL_NAME release $pure_version..."
 	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
 }
 
